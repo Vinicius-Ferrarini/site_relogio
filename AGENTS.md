@@ -1,4 +1,4 @@
-# Orientações para agentes — Eleven Store
+# Instruções para Claude
 
 ## Antes de editar
 
@@ -46,6 +46,7 @@ Trabalhe na pasta atual do repositório sem depender de caminhos absolutos da m�
 - Preserve fetch em HTTP/HTTPS e JSONP em file://. Não use eval para interpretar respostas.
 - Trate planilha, parâmetros da URL e armazenamento do navegador como dados não confiáveis. Use escape de HTML/textContent e valide URLs. Não injete descrições como HTML executável.
 - Preserve IDs e normalização de categorias. Ao mudar identificadores/armazenamento, considere URLs e carrinhos existentes.
+- Preserve a sincronização do carrinho entre abas e o foco ao atualizar/remover itens. Não envie WhatsApp em testes; intercepte a abertura e confira a mensagem.
 - Mantenha `eleven-cart-v2` e `eleven-catalog-v2`, ou implemente migração se necessário.
 - Ofertas precisam de preço positivo, menor que o normal e validade aplicável em UTC−03. Não invente descontos, avaliações, estoque, frete grátis ou condições comerciais.
 - Na falha de consulta, sinalize cache antigo e bloqueie compra com dados não atualizados.
@@ -54,7 +55,7 @@ Trabalhe na pasta atual do repositório sem depender de caminhos absolutos da m�
 
 ## Alterações e verificação
 
-1. Leia o código atual antes de editar. Prefira mudanças pontuais e legíveis. Evite acumular regras CSS contraditórias ou duplicar eventos.
+1. Leia o código atual e [TESTES.md](TESTES.md) antes de editar. Prefira mudanças pontuais e legíveis. Evite acumular regras CSS contraditórias ou duplicar eventos.
 2. Preserve o comportamento das outras páginas. Não misture reformatação ampla com correção pequena sem necessidade.
 3. Para mudanças funcionais, confira sintaxe, console e o fluxo afetado em navegador real. Não instale dependências na raiz só para validar uma mudança simples.
 4. Para layout, confira catálogo, busca e produto em 320, 390, 768, 769 e 1440px: transbordamento horizontal, legibilidade e cliques/toques.

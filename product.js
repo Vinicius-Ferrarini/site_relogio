@@ -31,7 +31,7 @@ function renderProductPage(id){
  '<div class="product-price-area">'+(onOffer(p)?'<del class="old-price">De '+money(p.original)+'</del>':'')+'<strong class="price">'+(cost>0?money(cost):'Preço sob consulta')+'</strong><p>Forma de pagamento a combinar com a loja.</p></div>'+
  '<div class="product-service-note">'+icon('message')+'<div><strong>Atendimento direto com a Eleven</strong><span>Tire suas dúvidas e confirme a disponibilidade pelo WhatsApp.</span></div></div>'+
  '<p class="product-instructions">Adicione ao carrinho para montar seu pedido ou converse com a gente sobre este produto.</p>'+
- '<div class="product-options"><label for="product-quantity">Quantidade<span class="product-quantity"><button type="button" data-detail-quantity="-1" aria-label="Diminuir quantidade">−</button><input id="product-quantity" type="number" min="1" max="99" step="1" inputmode="numeric" value="'+esc(oldQuantity)+'"><button type="button" data-detail-quantity="1" aria-label="Aumentar quantidade">+</button></span></label><label for="item-note">Preferência ou observação<input id="item-note" maxlength="500" placeholder="Ex.: cor, tamanho ou modelo" value="'+esc(oldNote)+'"></label></div>'+
+ '<div class="product-options"><label for="product-quantity">Quantidade<span class="product-quantity"><button type="button" data-detail-quantity="-1" aria-label="Diminuir quantidade">−</button><input id="product-quantity" type="number" required min="1" max="99" step="1" inputmode="numeric" value="'+esc(oldQuantity)+'"><button type="button" data-detail-quantity="1" aria-label="Aumentar quantidade">+</button></span></label><label for="item-note">Preferência ou observação<input id="item-note" maxlength="500" placeholder="Ex.: cor, tamanho ou modelo" value="'+esc(oldNote)+'"></label></div>'+
  '<div class="product-purchase-actions"><button class="button" id="detail-add" '+(!live||cost<=0?'disabled':'')+'>'+icon('bag')+' Adicionar ao carrinho</button><a class="button product-whatsapp" target="_blank" rel="noopener noreferrer" href="https://wa.me/'+cfg.whatsapp+'?text='+encodeURIComponent(message)+'">'+icon('message')+' Chamar no WhatsApp</a></div>'+
  '<div class="product-delivery">'+icon('truck')+'<p><strong>Entrega a combinar</strong><span>Consulte o frete e o prazo para sua região.</span></p></div>'+
  '<a class="product-description-link" href="#descricao">Ver descrição completa ↓</a></section></div>'+
@@ -41,7 +41,10 @@ function renderProductPage(id){
   if(!input.checkValidity()){input.reportValidity();return;}
   addCart(p.id,$('#item-note').value.trim(),Number(input.value));
  };
- $$('[data-detail-quantity]').forEach(button=>button.onclick=()=>{const input=$('#product-quantity');input.value=Math.max(1,Math.min(99,(Number(input.value)||1)+Number(button.dataset.detailQuantity)));});
+ const updateQuantityButtons=()=>{const value=Number($('#product-quantity').value);$('[data-detail-quantity="-1"]').disabled=value<=1;$('[data-detail-quantity="1"]').disabled=value>=99;};
+ $('#product-quantity').addEventListener('input',updateQuantityButtons);
+ $$('[data-detail-quantity]').forEach(button=>button.onclick=()=>{const input=$('#product-quantity');input.value=Math.max(1,Math.min(99,Math.trunc(Number(input.value)||1)+Number(button.dataset.detailQuantity)));updateQuantityButtons();});
+ updateQuantityButtons();
  const related=products.filter(item=>item.id!==p.id&&item.category===p.category).slice(0,4);
  $('#related-section').hidden=!related.length;
  $('#related-products').innerHTML=related.map(productCard).join('');

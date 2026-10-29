@@ -27,6 +27,7 @@ Em `file://`, a consulta da planilha usa JSONP do Google Visualization; em HTTP/
 | `assets/` | Logo, ícones e imagem substituta para fotos indisponíveis. |
 | `ABRIR-SITE.cmd` | Abre index.html no navegador padrão do Windows. |
 | `.nojekyll` | Mantém a publicação estática sem processamento Jekyll. |
+| [TESTES.md](TESTES.md) | Registro da revisão e roteiro de regressão. |
 | [AGENTS.md](AGENTS.md) | Instruções de manutenção para agentes. |
 | [claude.md](claude.md) | Ponto de entrada para essas instruções. |
 
@@ -53,7 +54,7 @@ A planilha precisa ser pública para leitura. Ela é consultada a cada abertura;
 | `Descricao` | Texto com quebras de linha preservadas. |
 | `Img1`, `Img2`, … | URLs HTTP/HTTPS das fotos, na ordem da galeria. |
 
-Títulos das colunas são normalizados sem distinção de maiúsculas ou acentos. Ofertas usam UTC−03 (Brasília) e são reavaliadas periodicamente durante a visita. Preencha IDs estáveis para preservar referências do carrinho e URLs ao renomear produtos.
+Títulos das colunas são normalizados sem distinção de maiúsculas ou acentos. Datas e horários nativos do Google Visualization também são aceitos; datas impossíveis não ativam descontos. Ofertas usam UTC−03 (Brasília) e são reavaliadas periodicamente durante a visita. Preencha IDs estáveis para preservar referências do carrinho e URLs ao renomear produtos.
 
 Se a consulta falhar, o site pode mostrar a última consulta salva, com aviso e compra bloqueada até atualizar os dados. Preços ausentes ou não positivos aparecem como sob consulta.
 
@@ -69,7 +70,7 @@ Se a consulta falhar, o site pode mostrar a última consulta salva, com aviso e 
 - A URL mantém `q`, `categoria`, `tipo`, `genero`, `min`, `max`, `ofertas=1` e `ordem` (`price-up`, `price-down` ou `name`). A ordenação padrão preserva a ordem da planilha.
 - Autocomplete com até seis sugestões, foto e preço; aceita clique, setas, Enter e Escape.
 - Cada cartão tem **Adicionar carrinho** e **Chamar no WhatsApp**.
-- Carrinho compartilhado entre as páginas, com quantidade e observação por item.
+- Carrinho compartilhado entre as páginas e sincronizado entre abas da mesma origem, com quantidade e observação por item.
 - Checkout com recebimento a combinar ou entrega no endereço; ViaCEP ajuda no preenchimento, que também pode ser manual.
 - A finalização abre o WhatsApp com uma mensagem preparada. O visitante precisa enviá-la; o site não confirma envio, pagamento ou reserva de estoque e não apaga automaticamente o carrinho.
 
@@ -106,7 +107,7 @@ Se existir `CNAME` no repositório de destino, preserve-o salvo pedido explícit
 
 Leia [AGENTS.md](AGENTS.md) antes de editar. Verifique as três páginas, o console e os fluxos afetados. Para responsividade, confira pelo menos 320, 390, 768, 769 e 1440px. Emulação de toque ajuda, mas não substitui todos os dispositivos reais.
 
-Não há suíte automatizada ou comando de build configurado. **Não gere ZIPs por padrão**; trabalhe diretamente nos arquivos do projeto.
+Consulte [TESTES.md](TESTES.md) para os cenários conferidos e o roteiro de regressão. Não há suíte automatizada instalada ou comando de build configurado. **Não gere ZIPs por padrão**; trabalhe diretamente nos arquivos do projeto.
 
 ## Referências e recursos
 

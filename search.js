@@ -58,5 +58,5 @@ setSearchFiltersOpen(!searchMobile.matches);
 $('#filter-toggle').onclick=()=>setSearchFiltersOpen($('#filters').hidden);
 searchMobile.addEventListener('change',()=>setSearchFiltersOpen(!searchMobile.matches));
 $('#only-offers').addEventListener('change',()=>{limit=12;renderSearchResults();});
-$('#apply-search-filters').onclick=()=>{renderSearchResults();if(!$('#price-filter-error').hidden){$('#min-price').focus();return;}if(searchMobile.matches)setSearchFiltersOpen(false);$('.search-results-toolbar').scrollIntoView({block:'start',behavior:'smooth'});};
+$('#apply-search-filters').onclick=()=>{renderSearchResults();if(!$('#price-filter-error').hidden){$('#min-price').focus();return;}if(searchMobile.matches){setSearchFiltersOpen(false);$('#filter-toggle').focus({preventScroll:true});}$('.search-results-toolbar').scrollIntoView({block:'start',behavior:'smooth'});};
 $('#search-active-filters').addEventListener('click',e=>{const button=e.target.closest('[data-remove-filter]');if(!button)return;const key=button.dataset.removeFilter;if(key==='ofertas')$('#only-offers').checked=false;else $(searchFilterFields[key]).value='';limit=12;renderSearchResults();});
