@@ -69,7 +69,7 @@ Se a consulta falhar, o site pode mostrar a última consulta salva, com aviso e 
 - “Limpar” remove os filtros e mantém a pesquisa; os chips removem um filtro por vez. “Ver mais produtos” amplia a lista de 12 em 12.
 - A URL mantém `q`, `categoria`, `tipo`, `genero`, `min`, `max`, `ofertas=1` e `ordem` (`price-up`, `price-down` ou `name`). A ordenação padrão preserva a ordem da planilha.
 - Autocomplete com até seis sugestões, foto e preço; aceita clique, setas, Enter e Escape.
-- Cada cartão tem **Adicionar carrinho** e **Chamar no WhatsApp**.
+- O cartão inteiro e o botão **Ver mais** abrem a página do produto; **Chamar no WhatsApp** continua independente. A adição ao carrinho fica na página do produto.
 - Carrinho compartilhado entre as páginas e sincronizado entre abas da mesma origem, com quantidade e observação por item.
 - Checkout com recebimento a combinar ou entrega no endereço; ViaCEP ajuda no preenchimento, que também pode ser manual.
 - A finalização abre o WhatsApp com uma mensagem preparada. O visitante precisa enviá-la; o site não confirma envio, pagamento ou reserva de estoque e não apaga automaticamente o carrinho.

@@ -40,3 +40,7 @@ Revisão executada em 29/10/2026 com Chrome automatizado. As verificações abai
 7. Para checkout, intercepte window.open ou pare antes do envio; nunca envie pedidos de teste à loja.
 
 Esta é uma lista de regressão manual com registro de verificações, não uma suíte instalada. Emulação de viewport não substitui testes em celulares físicos. Publicação real no GitHub Pages e envio real pelo WhatsApp não foram verificados.
+
+## Cartões de produto
+
+Os cartões do catálogo, busca e relacionados abrem o produto ao clicar na foto, nome, preço, espaços internos ou Ver mais. O WhatsApp é um link independente. Adicionar ao carrinho permanece na página do produto. Ao testar carrinho entre abas, adicione os itens nessa página.
