@@ -9,7 +9,7 @@ Documento de referência para alterações futuras. As observações abaixo fora
 
 ## Padrões já adotados
 
-Cabeçalho em faixas, categorias com ícones e destaque de promoções; catálogo em cartões; produto em página própria com galeria, preço, ações e descrição. Mobile com cabeçalho compacto, menu lateral, pesquisa recolhida, duas colunas e título do produto antes da imagem. Manter as cores e a identidade Eleven descritas em AGENTS.md.
+Cabeçalho em faixas, categorias com ícones e destaque de promoções; catálogo em cartões; produto em página própria com galeria, preço, ações e descrição. Mobile com cabeçalho compacto, menu lateral, pesquisa recolhida, duas colunas e título do produto antes da imagem. Manter as cores e a identidade Eleven descritas em [AGENTS.md](../AGENTS.md).
 
 ## Busca — comportamento observado
 

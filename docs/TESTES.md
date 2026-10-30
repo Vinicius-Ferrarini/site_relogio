@@ -44,3 +44,7 @@ Esta é uma lista de regressão manual com registro de verificações, não uma 
 ## Cartões de produto
 
 Os cartões do catálogo, busca e relacionados abrem o produto ao clicar na foto, nome, preço, espaços internos ou Ver mais. O WhatsApp é um link independente. Adicionar ao carrinho permanece na página do produto. Ao testar carrinho entre abas, adicione os itens nessa página.
+
+## Organização de pastas
+
+Após mover os arquivos para assets/css, assets/js, assets/images e docs, foram conferidos: carregamento das três páginas via file:// e HTTP em /site_relogio/, navegação pela busca, filtro e recarga, produto, carrinho e subtotal entre páginas, menu mobile e imagem substituta após falha. Não houve erros JavaScript nem arquivos locais ausentes, exceto a imagem inexistente simulada para testar o fallback. Os endereços dos HTML permanecem na raiz.

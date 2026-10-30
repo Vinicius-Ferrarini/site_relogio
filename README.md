@@ -1,33 +1,36 @@
 # Eleven Store
 
+[Acesse o nosso site](https://vinicius-ferrarini.github.io/site_relogio/)
+
 Loja de tecnologia em **HTML, CSS e JavaScript puros**, com catálogo do Google Sheets e pedidos pelo WhatsApp. Funciona localmente e em hospedagem estática, incluindo GitHub Pages. Não exige compilação nem instalação de dependências.
 
 ## Executar
 
-Abra **ABRIR-SITE.cmd** ou **index.html**. É necessário acesso à internet para consultar a planilha, as fotos e o CEP. Também é possível servir a pasta com qualquer servidor HTTP estático.
+Abra **index.html**. É necessário acesso à internet para consultar a planilha, as fotos e o CEP. Também é possível servir a pasta com qualquer servidor HTTP estático.
 
 Em `file://`, a consulta da planilha usa JSONP do Google Visualization; em HTTP/HTTPS, usa `fetch`. Preserve e verifique os dois modos ao alterar o carregamento.
 
 ## Estrutura
 
+Os HTML ficam na raiz para preservar os endereços públicos. Estilos ficam em `assets/css/`, scripts em `assets/js/`, imagens locais em `assets/images/` e documentação de referência em `docs/`. Os scripts continuam sem build e na mesma ordem de carregamento.
+
 | Arquivo | Responsabilidade |
 | --- | --- |
 | `index.html` | Página inicial, catálogo, filtros e estrutura do carrinho/checkout. |
 | `buscar.html` | Página de resultados de busca com filtros e ordenação. |
-| `search.js` | Pesquisa aplicada, filtros, contagens e sincronização da URL. |
-| `search.css` | Layout desktop/mobile da página de busca; carregado após mobile.css. |
-| [referencia.md](referencia.md) | Observações da referência visual e decisões de adaptação. |
+| `assets/js/search.js` | Pesquisa aplicada, filtros, contagens e sincronização da URL. |
+| `assets/css/search.css` | Layout desktop/mobile da página de busca; carregado após mobile.css. |
+| [referencia.md](docs/referencia.md) | Observações da referência visual e decisões de adaptação. |
 | `produto.html` | Página independente de produto, com navegação e carrinho compartilhados. |
-| `config.js` | Planilha, aba e número de WhatsApp. |
-| `app.js` | Dados, catálogo, autocomplete, categorias, carrinho, checkout e navegação. |
-| `product.js` | Galeria, preço, quantidade, descrição e produtos relacionados. |
-| `styles.css` | Identidade visual, estilos gerais e desktop. |
-| `mobile.css` | Adaptação mobile; carregado após styles.css. |
-| `mobile.js` | Menu lateral, busca recolhível, carrosséis e gestos da galeria. |
-| `assets/` | Logo, ícones e imagem substituta para fotos indisponíveis. |
-| `ABRIR-SITE.cmd` | Abre index.html no navegador padrão do Windows. |
+| `assets/js/config.js` | Planilha, aba e número de WhatsApp. |
+| `assets/js/app.js` | Dados, catálogo, autocomplete, categorias, carrinho, checkout e navegação. |
+| `assets/js/product.js` | Galeria, preço, quantidade, descrição e produtos relacionados. |
+| `assets/css/styles.css` | Identidade visual, estilos gerais e desktop. |
+| `assets/css/mobile.css` | Adaptação mobile; carregado após styles.css. |
+| `assets/js/mobile.js` | Menu lateral, busca recolhível, carrosséis e gestos da galeria. |
+| `assets/images/` | Logo, ícones e imagem substituta para fotos indisponíveis. |
 | `.nojekyll` | Mantém a publicação estática sem processamento Jekyll. |
-| [TESTES.md](TESTES.md) | Registro da revisão e roteiro de regressão. |
+| [TESTES.md](docs/TESTES.md) | Registro da revisão e roteiro de regressão. |
 | [AGENTS.md](AGENTS.md) | Instruções de manutenção para agentes. |
 | [claude.md](claude.md) | Ponto de entrada para essas instruções. |
 
@@ -35,7 +38,7 @@ Cabeçalhos, rodapés, menus e formulários compartilhados estão nos três arqu
 
 ## Configuração e catálogo
 
-`config.js` contém `window.STORE_CONFIG` com a planilha original, aba `gid: 0` e WhatsApp `5548999560110`. Não coloque senhas ou tokens no front-end.
+`assets/js/config.js` contém `window.STORE_CONFIG` com a planilha original, aba `gid: 0` e WhatsApp `5548999560110`. Não coloque senhas ou tokens no front-end.
 
 A planilha precisa ser pública para leitura. Ela é consultada a cada abertura; produtos e categorias variam conforme o cadastro. Alterar a planilha não exige republicar o site, mas pode exigir recarregar a página; o serviço externo também pode manter cache.
 
@@ -95,7 +98,7 @@ O `localStorage` guarda `eleven-cart-v2` (IDs, quantidades e observações dos i
 
 ## GitHub Pages
 
-1. Envie os três HTML, todos os JS/CSS listados acima, `assets/` e `.nojekyll` para a raiz do repositório.
+1. Envie os três HTML, a pasta `assets/` completa (mantendo suas subpastas) e `.nojekyll` para a raiz do repositório.
 2. Em **Settings → Pages**, configure publicação pela branch desejada e pasta **/ (root)**.
 3. Confira a página inicial, o acesso direto a um produto e a uma busca filtrada, incluindo a recarga desses endereços após publicar.
 
@@ -107,7 +110,7 @@ Se existir `CNAME` no repositório de destino, preserve-o salvo pedido explícit
 
 Leia [AGENTS.md](AGENTS.md) antes de editar. Verifique as três páginas, o console e os fluxos afetados. Para responsividade, confira pelo menos 320, 390, 768, 769 e 1440px. Emulação de toque ajuda, mas não substitui todos os dispositivos reais.
 
-Consulte [TESTES.md](TESTES.md) para os cenários conferidos e o roteiro de regressão. Não há suíte automatizada instalada ou comando de build configurado. **Não gere ZIPs por padrão**; trabalhe diretamente nos arquivos do projeto.
+Consulte [TESTES.md](docs/TESTES.md) para os cenários conferidos e o roteiro de regressão. Não há suíte automatizada instalada ou comando de build configurado. **Não gere ZIPs por padrão**; trabalhe diretamente nos arquivos do projeto.
 
 ## Referências e recursos
 
@@ -115,4 +118,4 @@ Consulte [TESTES.md](TESTES.md) para os cenários conferidos e o roteiro de regr
 - [Site original Eleven Store](https://elevenstore11.com.br/)
 - [Referência visual Carlin Bilhares](https://www.carlinbilhares.com.br/)
 
-A organização desktop/mobile foi adaptada à Eleven. O ícone `assets/promocoes-icone.png` veio da referência a pedido do proprietário; o vetor de WhatsApp veio do projeto Simple Icons. As fotos dos produtos permanecem vinculadas ao cadastro da Eleven.
+A organização desktop/mobile foi adaptada à Eleven. O ícone `assets/images/promocoes-icone.png` veio da referência a pedido do proprietário; o vetor de WhatsApp veio do projeto Simple Icons. As fotos dos produtos permanecem vinculadas ao cadastro da Eleven.
